@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { TodoTask } from '../../containers/HomePage/HomePage';
-import './TodoForm.scss';
+import styles from './TodoForm.module.scss';
 import CloseIcon from '../../assets/cancel.svg';
 import { formatDate } from '../../helpers';
+import classNames from 'classnames/bind';
 export type Priority = 'Low' | 'Normal' | 'High';
 export type ActionForm = 'Add' | 'Update';
+
+const cx = classNames.bind(styles);
 export interface TodoFormProps {
   todoTask?: TodoTask;
   action: ActionForm;
@@ -34,18 +37,18 @@ const TodoForm: React.FC<TodoFormProps> = ({
   };
 
   return (
-    <div className="todo-form">
+    <div className={cx('todo-form')}>
       {action === 'Add' && (
         <>
-          <div className="close-icon">
+          <div className={cx('close-icon')}>
             <img src={CloseIcon} onClick={() => hideModal()} alt="close-icon" />
           </div>
-          <h2 className="form-title"> New Task</h2>
+          <h2 className={cx('form-title')}> New Task</h2>
         </>
       )}
-      <div className="form-content">
+      <div className={cx('form-content')}>
         <input
-          className="form-input"
+          className={cx('form-input')}
           placeholder="Add new task..."
           value={task?.title}
           onChange={(event) => {
@@ -55,18 +58,18 @@ const TodoForm: React.FC<TodoFormProps> = ({
           maxLength={255}
         />
         <textarea
-          className="form-description"
+          className={cx('form-description')}
           value={task?.description}
           onChange={(event) =>
             setTask({ ...task, description: event.target.value })
           }
           maxLength={1000}
         />
-        <div className="form-content-footer">
-          <div className="due-date">
-            <div className="due-date-label">Due Date</div>
+        <div className={cx('form-content-footer')}>
+          <div className={cx('due-date')}>
+            <div className={cx('due-date-label')}>Due Date</div>
             <input
-              className="select-date"
+              className={cx('select-date')}
               type="date"
               value={
                 task?.dueDate
@@ -79,10 +82,10 @@ const TodoForm: React.FC<TodoFormProps> = ({
               }
             />
           </div>
-          <div className="priority">
-            <div className="priority-label">Priority</div>
+          <div className={cx('priority')}>
+            <div className={cx('priority-label')}>Priority</div>
             <select
-              className="select-priority"
+              className={cx('select-priority')}
               onChange={(event) =>
                 setTask({
                   ...task,
@@ -97,10 +100,10 @@ const TodoForm: React.FC<TodoFormProps> = ({
             </select>
           </div>
         </div>
-        <div className="error">{error}</div>
+        <div className={cx('error')}>{error}</div>
       </div>
       <button
-        className="btn-submit"
+        className={cx('btn-submit')}
         onClick={() => {
           if (task.title) {
             action === 'Add' && hideModal();

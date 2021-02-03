@@ -1,7 +1,10 @@
+import classNames from 'classnames/bind';
 import React from 'react';
 import { TodoTask } from '../../containers/HomePage/HomePage';
 import TodoForm from '../TodoForm';
-import './TodoItem.scss';
+import styles from './TodoItem.module.scss';
+
+const cx = classNames.bind(styles);
 export interface TodoItemProps {
   todoTask: TodoTask;
   expandId?: string;
@@ -23,28 +26,30 @@ const TodoItem: React.FC<TodoItemProps> = ({
 }: TodoItemProps) => {
   return (
     <>
-      <div className="todo-item">
-        <div className="block-left">
+      <div className={cx('todo-item')}>
+        <div className={cx('block-left')}>
           <input
             onClick={() => onClick(todoTask)}
             type="checkbox"
             name="checkbox-item"
             id={todoTask.id}
-            className="checkbox"
+            className={cx('checkbox')}
           />
-          <div className={`task-name ${todoTask.isDone ? 'done-task' : ''}`}>
+          <div
+            className={cx('task-name', `${todoTask.isDone ? 'done-task' : ''}`)}
+          >
             {todoTask.title}
           </div>
         </div>
-        <div className="block-right">
+        <div className={cx('block-right')}>
           <button
-            className="btn btn-detail"
+            className={cx('btn', 'btn-detail')}
             onClick={() => viewTaskDetail(todoTask.id)}
           >
             Detail
           </button>
           <button
-            className="btn btn-remove"
+            className={cx('btn', 'btn-remove')}
             onClick={() => removeTask(todoTask.id)}
           >
             Remove

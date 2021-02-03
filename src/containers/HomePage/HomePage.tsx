@@ -1,3 +1,4 @@
+import classNames from 'classnames/bind';
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import ActionBox from '../../components/ActionBox';
@@ -5,7 +6,9 @@ import TodoForm from '../../components/TodoForm';
 import { Priority } from '../../components/TodoForm/TodoForm';
 import TodoItem from '../../components/TodoItem';
 import Modal from '../../components/UI/Modal';
-import './HomePage.scss';
+import styles from './HomePage.module.scss';
+
+const cx = classNames.bind(styles);
 
 export type Action = 'MarkDone' | 'Remove';
 export interface TodoTask {
@@ -150,16 +153,19 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <div className="home-page">
-        <div className="display-area">
-          <h2 className="title">To Do List</h2>
-          <div className="top-feature">
-            <button className="btn add-new-task" onClick={() => handleShow()}>
+      <div className={cx('home-page')}>
+        <div className={cx('display-area')}>
+          <h2 className={cx('title')}>To Do List</h2>
+          <div className={cx('top-feature')}>
+            <button
+              className={cx('btn', 'add-new-task')}
+              onClick={() => handleShow()}
+            >
               Add New Task
             </button>
-            <div className="btn-block-right">
+            <div className={cx('btn-block-right')}>
               <button
-                className="btn btn-mark-done"
+                className={cx('btn','btn-mark-done')}
                 onClick={() => {
                   setAction('MarkDone');
                   handleShowActionBox('Mark all selected tasks as done?');
@@ -168,7 +174,7 @@ const HomePage: React.FC = () => {
                 Mark As Done
               </button>
               <button
-                className="btn btn-remove"
+                className={cx('btn', 'btn-remove')}
                 onClick={() => {
                   setAction('Remove');
                   handleShowActionBox('Delete all selected tasks?');
@@ -179,16 +185,16 @@ const HomePage: React.FC = () => {
             </div>
           </div>
 
-          <div className="search">
+          <div className={cx('search')}>
             <input
-              className="input-search"
+              className={cx('input-search')}
               placeholder="Search..."
               value={searchKeyword}
               onChange={(event) => setSearchKeyword(event.target.value)}
               maxLength={255}
             ></input>
           </div>
-          <div className="task-list">
+          <div className={cx('task-list')}>
             {!!todoSearchList.length ? (
               todoSearchList.map((task: TodoTask) => (
                 <TodoItem
@@ -205,7 +211,7 @@ const HomePage: React.FC = () => {
                 </TodoItem>
               ))
             ) : (
-              <div className="status-empty">Your task not found</div>
+              <div className={cx('status-empty')}>Your task not found</div>
             )}
           </div>
         </div>
