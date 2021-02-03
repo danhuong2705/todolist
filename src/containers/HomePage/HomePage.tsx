@@ -165,7 +165,7 @@ const HomePage: React.FC = () => {
             </button>
             <div className={cx('btn-block-right')}>
               <button
-                className={cx('btn btn-mark-done')}
+                className={cx('btn','btn-mark-done')}
                 onClick={() => {
                   setAction('MarkDone');
                   handleShowActionBox('Mark all selected tasks as done?');
