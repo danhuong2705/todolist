@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { getScrollbarWidth } from '../../../helpers';
-import './Modal.scss';
+import styles from './Modal.module.scss';
 import Overlay from '../Overlay';
+import classNames from 'classnames/bind';
 
+const cx = classNames.bind(styles);
 export interface ModalProps {
   show: boolean;
   onHide: () => void;
@@ -28,8 +30,8 @@ const Modal: React.FunctionComponent<ModalProps> = ({
   if (!show) return null;
   return (
     <Overlay show={show} onEscPressed={onHide}>
-      <div className="backdrop" onClick={onHide} />
-      <div className="modal-content">{children}</div>
+      <div className={cx('backdrop')} onClick={onHide} />
+      <div className={cx('modal-content')}>{children}</div>
     </Overlay>
   );
 };

@@ -38,7 +38,7 @@ const Overlay: React.FunctionComponent<OverlayProps> = ({
       document.body.removeChild(elm);
     };
   }, [show]);
-
+  
   const handleDocumentKeyDown = useEventCallback((e: KeyboardEvent) => {
     if (e.keyCode === 27 && onEscPressed) {
       onEscPressed();

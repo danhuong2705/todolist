@@ -1,0 +1,12 @@
+Todo List has been completed. Please use application with the following guide:
+
+Firstly, you need to install application environment in "README.md" file attaching with project on Github to run application.
+Github repository url: https://github.com/danhuong2705/todolist
+
++ To create new task: click "add new task", enter the information including task name, description, duedate and priority and click "Add" button.
++ To update task: click "detail" button on each item. Application will appear one form under the item to edit task detail.
+typing your information and click "Update" button.
++ To mark as done bulk items: select all tasks you want and click "Mark as done", application will appear one action box
+to ask you again, click "Done" to complete and cancel to close the box.
++ To remove bulk items: select all tasks you want and click "Remove", application will appear one action box
+to ask you again, click "Remove" to complete and cancel to close the box.

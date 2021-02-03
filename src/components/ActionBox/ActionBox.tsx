@@ -1,6 +1,8 @@
 import React from 'react';
-import './ActionBox.scss';
+import styles from './ActionBox.module.scss';
+import classNames from 'classnames/bind';
 
+const cx = classNames.bind(styles);
 export interface ActionBoxProps {
   content: string;
   leftBtnName: string;
@@ -16,13 +18,19 @@ const ActionBox: React.FC<ActionBoxProps> = ({
   rightAction,
 }: ActionBoxProps) => {
   return (
-    <div className="action-box">
-      <div className="content">{content}</div>
-      <div className="action">
-        <button className="btn left-action" onClick={() => leftAction()}>
+    <div className={cx('action-box')}>
+      <div className={cx('content')}>{content}</div>
+      <div className={cx('action')}>
+        <button
+          className={cx('btn', 'left-action')}
+          onClick={() => leftAction()}
+        >
           {leftBtnName}
         </button>
-        <button className="btn right-action" onClick={() => rightAction()}>
+        <button
+          className={cx('btn', 'right-action')}
+          onClick={() => rightAction()}
+        >
           {rightBtnName}
         </button>
       </div>

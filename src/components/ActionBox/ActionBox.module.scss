@@ -14,15 +14,16 @@
     overflow: hidden;
     white-space: nowrap;
   }
-  .btn {
-    border-radius: 0.25rem;
-    color: #ffffff;
-    border: none;
-    padding: 0.25rem 1.25rem;
-    color: #ffffff;
-    margin-left: 1rem;
-  }
+
   .action {
+    .btn {
+      border-radius: 0.25rem;
+      color: #ffffff;
+      border: none;
+      padding: 0.25rem 1.25rem;
+      color: #ffffff;
+      margin-left: 1rem;
+    }
     .left-action {
       background-color: #2196f3;
     }
